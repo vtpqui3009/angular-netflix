@@ -1,0 +1,6 @@
+<swiper [config]="config">
+  <ng-template swiperSlide *ngFor="let banner of banners">
+    <app-banner-card [imageUrl]="banner.imageUrl" [description]="banner.description" [name]="banner.name"
+      [category]="banner.category"></app-banner-card>
+  </ng-template>
+</swiper>

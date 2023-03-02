@@ -1,0 +1,14 @@
+<a routerLink="/movies/test" class="text-white">
+    <li class="section-movie__list-item" style="background-image: url({{imageUrl}});"
+        [class.movieHeight]="href == '/movies' || href == '/tv-series'">
+        <div class="section-movie__backdrop">
+            <button mat-icon-button class="section-movie__play-btn">
+                <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+            <div class="section-movie__footer">
+                <div>{{year}}</div>
+                <div>{{name}}</div>
+            </div>
+        </div>
+    </li>
+</a>

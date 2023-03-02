@@ -1,0 +1,20 @@
+// Spacing
+$spacing: 10px;
+
+// Media queries size
+$large_pc_size: 1280px; // PC screen size.
+$pc_size: 1024px; // PC screen size.
+$tablet_size: 720px; // Tablet screen size.
+$phone_size: 320px; // Phone screen size.
+
+// Media queries type
+$PHONE: "PHONE";
+$TABLET: "TABLET";
+$PC_TABLET: "PC_TABLET";
+$PC: "PC";
+$LARGE_PC: "LARGE_PC";
+
+// Transition
+$linearTransition: all 0.25s linear;
+$x4linearTransition: all 0.4s linear;
+$easeInOutTransition: all 0.25s ease-in-out;

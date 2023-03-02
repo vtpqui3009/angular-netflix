@@ -1,0 +1,23 @@
+@import "abstracts/mixin";
+@import "abstracts/colors";
+@import "base/base";
+@import "abstracts/variables";
+
+.search-tab__container {
+  @include flexbox(center, center);
+  transform: translateY($spacing * 2);
+}
+.search-tab__input {
+  @include size(96%);
+  margin: 0 auto;
+  display: block;
+  padding: $spacing * 1.8;
+  background-color: transparent;
+  border: 1px solid gray;
+  border-radius: calc($spacing / 2);
+  color: $white;
+  font-size: initial;
+}
+.search-tab__input:focus {
+  border: 1px solid gray;
+}

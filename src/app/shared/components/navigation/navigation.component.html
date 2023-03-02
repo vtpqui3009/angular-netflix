@@ -1,0 +1,83 @@
+<!-- Mat Toolbar -->
+<mat-toolbar [class.active]="isActiveScrollbar">
+  <div class="toolbar-navigation">
+    <button mat-icon-button class="menu-icon" aria-label="Example icon-button with menu icon"
+      (click)="onOpenNavigationSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="toolbar-navigation__logo">Ivy<span class="text-red">Movie</span></span>
+    <ul class="toolbar-navigation__list">
+      <li *ngFor="let tab of navigationTabs" class="toolbar-navigation__list-item"><a matRipple
+          [routerLinkActiveOptions]="{ exact: tab.id == 1 && true}" [routerLinkActive]="['active']"
+          routerLink={{tab.link}}>{{tab.name}}</a></li>
+
+      <li class="toolbar-navigation__list-item"><button mat-icon-button class="moon-icon" aria-label="Moon icon">
+          <mat-icon>brightness_2</mat-icon>
+        </button></li>
+    </ul>
+  </div>
+  <div class="toolbar-auth">
+    <button class="primary-button" matRipple (click)="onOpenAuthDiaglog()">Sign in</button>
+  </div>
+</mat-toolbar>
+
+<!-- Navigation Sidebar -->
+<ng-template [ngIf]="isShowSidebar">
+  <aside class="aside">
+    <span class="toolbar-navigation__logo aside-logo">Ivy<span class="text-red">Movie</span></span>
+    <div class="aside-menu">
+      <div class="aside-menu__title">Menu</div>
+      <ul class="aside-menu__list">
+        <li *ngFor="let tab of navigationTabs" class="aside-menu__item"><a matRipple
+            [routerLinkActiveOptions]="{ exact: tab.id == 1 && true}" [routerLinkActive]="['active']"
+            routerLink={{tab.link}}><mat-icon>{{tab.icon}}</mat-icon> <span>{{tab.name}}</span></a></li>
+      </ul>
+    </div>
+    <div class="aside-menu">
+      <div class="aside-menu__title">Theme</div>
+      <ul class="aside-menu__list">
+        <li class="toolbar-navigation__list-item"><button mat-icon-button class="moon-icon" aria-label="Moon icon">
+            <mat-icon>brightness_2</mat-icon><span class="dark-mode__text">Dark mode</span>
+          </button></li>
+      </ul>
+    </div>
+  </aside>
+  <app-backdrop [isShowBackdrop]="true" (onCloseBackdrop)="onCloseNavigationSidebar()"></app-backdrop>
+</ng-template>
+
+<!-- Sign In Form -->
+<ng-template [ngIf]="isShowDialog && isSwitchLoginMode">
+  <form class="auth-dialog" [class.bounce]="isShowDialog" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <span mat-dialog-title class="toolbar-navigation__logo">Ivy<span class="text-red">Movie</span></span>
+    <div mat-dialog-content class="mat-dialog-content">
+      <input type="text" placeholder="Username" class="form-control" formControlName="username">
+      <input type="password" placeholder="Password" class="form-control" formControlName="password">
+      <span class="switch-mode" (click)="onSwitchLoginMode()">Does not have an account ?
+        Sign Up</span>
+    </div>
+    <div mat-dialog-actions class="mat-dialog-actions">
+      <button matRipple class="full-width__button" type="submit" [disabled]="!signInForm.valid"
+        [class.disabled]="!signInForm.valid">Sign in</button>
+    </div>
+  </form>
+  <app-backdrop [isShowBackdrop]="true" (onCloseBackdrop)="onCloseAuthDialog()"></app-backdrop>
+</ng-template>
+
+<!-- Sign Up Form -->
+<ng-template [ngIf]="isShowDialog && !isSwitchLoginMode">
+  <form class="auth-dialog" [class.bounce]="isShowDialog" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <span mat-dialog-title class="toolbar-navigation__logo">Ivy<span class="text-red">Movie</span></span>
+    <div mat-dialog-content class="mat-dialog-content">
+      <input type="text" placeholder="Username" class="form-control" formControlName="username">
+      <input type="text" placeholder="Display name" class="form-control" formControlName="displayName">
+      <input type="password" placeholder="Password" class="form-control" formControlName="password">
+      <input type="password" placeholder="Confirm Password" class="form-control" formControlName="confirmPassword">
+      <span class="switch-mode" (click)="onSwitchLoginMode()">Aldready have an account? Sign In</span>
+    </div>
+    <div mat-dialog-actions class="mat-dialog-actions">
+      <button matRipple class="full-width__button" type="submit" [disabled]="!signUpForm.valid"
+        [class.disabled]="!signUpForm.valid">Sign up</button>
+    </div>
+  </form>
+  <app-backdrop [isShowBackdrop]="true" (onCloseBackdrop)="onCloseAuthDialog()"></app-backdrop>
+</ng-template>

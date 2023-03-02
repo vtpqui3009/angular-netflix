@@ -1,0 +1,25 @@
+@import "abstracts/variables";
+
+@mixin responsive($media) {
+  @if $media ==$PHONE {
+    @media only screen and (max-width: ($tablet_size - 1)) {
+      @content;
+    }
+  } @else if $media ==$TABLET {
+    @media only screen and (min-width: ($tablet_size - 1)) and (max-width: $pc_size) {
+      @content;
+    }
+  } @else if $media ==$PC {
+    @media only screen and (min-width: ($pc_size + 1)) and (min-width: $pc_size) {
+      @content;
+    }
+  } @else if $media ==$LARGE_PC {
+    @media only screen and (min-width: ($large_pc_size + 1)) and (min-width: $large_pc_size) {
+      @content;
+    }
+  } @else if $media ==$PC_TABLET {
+    @media only screen and (min-width: ($tablet_size - 1)) {
+      @content;
+    }
+  }
+}

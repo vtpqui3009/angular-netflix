@@ -1,0 +1,15 @@
+<div class="header" style="background-image: url({{imageUrl}});">
+    <div class="header-content">
+        <div class="header-content__title">{{name}}</div>
+        <div class="header-content__actions" *ngFor="let cate of category">
+            <button class="chip-button">{{cate}}</button>
+        </div>
+        <p class="header-content__description">{{description}}</p>
+        <button class="icon-button">
+            <button mat-icon-button class="icon-button__arrow">
+                <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+            <span class="icon-button__text">Watch now</span>
+        </button>
+    </div>
+</div>

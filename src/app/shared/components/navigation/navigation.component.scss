@@ -1,0 +1,170 @@
+@import "abstracts/mixin";
+@import "abstracts/variables";
+@import "components/button";
+@import "abstracts/colors";
+@import "abstracts/media-query";
+@import "base/animation";
+
+// Mat toolbar css
+mat-toolbar {
+  @include flexbox(center, space-between);
+  @include zIndexWithPosition(fixed, 2);
+  background-color: transparent !important;
+}
+
+mat-toolbar.active {
+  background-color: $black-dark !important;
+  transition: $linearTransition;
+}
+
+.menu-icon {
+  @include responsive($PHONE) {
+    display: block;
+  }
+
+  display: none;
+}
+
+.toolbar-navigation__logo {
+  font-size: $spacing * 2.5;
+  font-weight: bold;
+  color: $white;
+}
+
+.toolbar-navigation {
+  @include flexbox(center, flex-start, row, $spacing * 4);
+
+  @include responsive($PHONE) {
+    gap: 0;
+  }
+}
+
+.toolbar-navigation__list {
+  @include flexbox(center, flex-start, row, $spacing);
+
+  @include responsive($PHONE) {
+    display: none;
+  }
+}
+
+.toolbar-navigation__list-item a {
+  @include textTransform(uppercase, initial);
+
+  @include responsive($PC) {
+    font-weight: bold;
+  }
+
+  color: $white;
+  font-size: $spacing * 1.4;
+  padding: $spacing $spacing * 2;
+  border-radius: calc($spacing / 2);
+}
+
+.toolbar-navigation__list-item a.active {
+  background-color: $primary-light;
+  transition: $easeInOutTransition;
+}
+
+// Auth dialog css
+
+.auth-dialog {
+  @include flexbox(center, center, column, $spacing * 3);
+  @include position(absolute, 20%, unset, unset, 30%);
+  @include size(40%, max-content);
+
+  @include responsive($TABLET) {
+    @include size(50%, max-content);
+  }
+
+  @include responsive($PHONE) {
+    @include position(absolute, 20%, unset, unset, 10%);
+    @include size(80%, max-content);
+  }
+
+  color: $white;
+  background: $black-dark;
+  padding: $spacing * 3;
+  z-index: 3;
+  transition: $easeInOutTransition;
+}
+
+.mat-dialog-content,
+.mat-dialog-actions {
+  @include size(100%);
+  @include flexbox(center, center, column, $spacing * 2);
+}
+
+.switch-mode {
+  @include responsive($PHONE) {
+    font-size: $spacing * 1.2;
+  }
+
+  color: $primary-light;
+  text-align: center;
+  background-color: transparent;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.disabled {
+  background-color: $primary-dark;
+}
+
+// Aside navigation css
+.aside {
+  @include position(fixed, 0, unset, 0, 0);
+  @include size(0);
+
+  @include responsive($TABLET) {
+    @include size(60%);
+  }
+
+  @include responsive($PHONE) {
+    @include size(80%);
+  }
+
+  background-color: $black-dark;
+  transition: $linearTransition;
+  z-index: 3;
+  color: $white;
+  padding: $spacing * 4;
+}
+
+.aside-logo {
+  @include flexbox(center, center);
+  padding: $spacing * 2 0;
+}
+
+.aside-menu__title {
+  @include textTransform(uppercase, bold);
+  padding: $spacing * 2;
+}
+
+.aside-menu__list {
+  @include flexbox(flex-start, center, column, $spacing * 3);
+}
+
+.aside-menu__list li {
+  @include size(100%);
+  @include flexbox(center, center);
+}
+
+.aside-menu__list li a,
+.aside-menu__list li button {
+  @include textTransform(uppercase, initial);
+  @include size(70%);
+  @include flexbox(center, flex-start, row, $spacing * 2);
+  color: $white !important;
+  padding: $spacing;
+  border-radius: $spacing;
+  font-size: $spacing * 1.3;
+}
+
+.dark-mode__text {
+  font-size: $spacing * 1.3;
+  font-weight: bold;
+}
+
+.aside-menu__list li a.active {
+  background-color: $primary-light;
+}

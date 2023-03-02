@@ -1,0 +1,10 @@
+<footer>
+    <div class="footer-logo">
+        <span class="footer-logo__text">Ivy<span class="text-red">Movie</span></span>
+    </div>
+    <ul class="footer-menu">
+        <li *ngFor="let tab of navigationTabs" class="footer-menu__item"><a matRipple
+                [routerLinkActiveOptions]="{ exact: tab.id == 1 && true}" [routerLinkActive]="['active']"
+                routerLink={{tab.link}}>{{tab.name}}</a></li>
+    </ul>
+</footer>

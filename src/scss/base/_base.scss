@@ -164,3 +164,11 @@ input:focus {
 .mdc-tab-indicator__content.mdc-tab-indicator__content--underline {
   border: none !important;
 }
+
+.gallery-thumbs {
+  height: 200px;
+  box-sizing: border-box;
+  padding: 10px 0;
+  overflow-y: hidden;
+  overflow-x: auto;
+}

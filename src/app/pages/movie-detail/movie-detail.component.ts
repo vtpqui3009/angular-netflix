@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // import Swiper core and required modules
 import { SwiperOptions } from 'swiper';
 import { MOVIES_DATA } from 'src/app/shared/mock/mock-data';
-import { MovieCard } from 'src/app/shared/model/movie-card';
+import { MovieCard } from 'src/app/shared/models/movie-card';
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',

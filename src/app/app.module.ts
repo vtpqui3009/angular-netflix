@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SwiperModule } from 'swiper/angular';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
 import { HeaderAndFooterLayoutComponent } from './core/layouts/header-and-footer-layout/header-and-footer-layout.component';
@@ -50,6 +51,7 @@ import { PersonDetailPageComponent } from './pages/person-detail-page/person-det
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    HttpClientModule,
     SwiperModule,
     ReactiveFormsModule,
   ],

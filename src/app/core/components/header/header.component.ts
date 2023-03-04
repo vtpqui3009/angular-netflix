@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import Swiper core and required modules
 import { SwiperOptions } from 'swiper';
-import { BannerCard } from 'src/app/shared/model/banner-card';
+import { BannerCard } from 'src/app/shared/models/banner-card';
 import { BANNER_MOCK_DATA } from 'src/app/shared/mock/mock-data';
 @Component({
   selector: 'app-header',

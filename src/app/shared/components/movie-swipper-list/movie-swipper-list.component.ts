@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 // import Swiper core and required modules
 import { SwiperOptions } from 'swiper';
-import { MovieCard } from '../../model/movie-card';
+import { MovieCard } from '../../models/movie-card';
 
 @Component({
   selector: 'app-movie-swipper-list',

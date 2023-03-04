@@ -1,6 +1,6 @@
-import { MovieCard } from '../model/movie-card';
-import { BannerCard } from '../model/banner-card';
-import { Person } from '../model/person';
+import { MovieCard } from '../models/movie-card';
+import { BannerCard } from '../models/banner-card';
+import { Person } from '../models/person';
 export const MOCK_DATA: MovieCard[] = [
   {
     imageUrl: 'https://image.tmdb.org/t/p/w500/vwDew97AtBlmD6Mj4kK5BQqm2XK.jpg',

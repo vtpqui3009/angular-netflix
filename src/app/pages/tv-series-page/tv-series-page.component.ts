@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MOVIES_DATA } from 'src/app/shared/mock/mock-data';
-import { MovieCard } from 'src/app/shared/model/movie-card';
+import { MovieCard } from 'src/app/shared/models/movie-card';
 @Component({
   selector: 'app-tv-series-page',
   templateUrl: './tv-series-page.component.html',

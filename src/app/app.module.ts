@@ -7,6 +7,9 @@ import { MaterialModule } from './material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SwiperModule } from 'swiper/angular';
 
+import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
+import { HeaderAndFooterLayoutComponent } from './core/layouts/header-and-footer-layout/header-and-footer-layout.component';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/components/header/header.component';
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
@@ -17,10 +20,11 @@ import { TvSeriesPageComponent } from './pages/tv-series-page/tv-series-page.com
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { BackdropComponent } from './shared/components/backdrop/backdrop.component';
 import { MovieCardComponent } from './shared/components/movie-card/movie-card.component';
-import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
 import { MovieSwipperListComponent } from './shared/components/movie-swipper-list/movie-swipper-list.component';
 import { BannerCardComponent } from './shared/components/banner-card/banner-card.component';
 import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
+import { PersonPageComponent } from './pages/person-page/person-page.component';
+import { PersonDetailPageComponent } from './pages/person-detail-page/person-detail-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,9 +38,12 @@ import { MovieDetailComponent } from './pages/movie-detail/movie-detail.componen
     BackdropComponent,
     MovieCardComponent,
     MainLayoutComponent,
+    HeaderAndFooterLayoutComponent,
     MovieSwipperListComponent,
     BannerCardComponent,
     MovieDetailComponent,
+    PersonPageComponent,
+    PersonDetailPageComponent,
   ],
   imports: [
     BrowserModule,

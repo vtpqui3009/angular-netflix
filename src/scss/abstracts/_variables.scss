@@ -1,11 +1,34 @@
-// Spacing
-$spacing: 10px;
+// SPACING
+$SPACING: 10px;
+
+// Line height
+$LINE_HEIGHT: $SPACING * 3.2;
+
+// Font size
+$TEXT_MEDIUM: $SPACING * 1.4;
+$TEXT_NORMAL: $SPACING * 1.6;
+$TEXT_LARGE: $SPACING * 2.4;
+$TEXT_2XL: $SPACING * 2;
+$TEXT_3XL: $SPACING * 3;
+$TEXT_4XL: $SPACING * 4;
+$TEXT_5XL: $SPACING * 5;
+$TEXT_6XL: $SPACING * 6;
+
+// Border
+$BORDER_ZERO: 0;
+$BORDER-NONE: none !important;
+$BORDER-GRAY: 1px solid gray;
+
+// Border-radius
+$BORDER-RADIUS-SMALL: calc($SPACING / 2);
+$BORDER-RADIUS-NORMAL: $SPACING;
+$BORDER-RADIUS-LARGE: $SPACING * 2;
 
 // Media queries size
-$large_pc_size: 1280px; // PC screen size.
-$pc_size: 1024px; // PC screen size.
-$tablet_size: 720px; // Tablet screen size.
-$phone_size: 320px; // Phone screen size.
+$LARGE_PC_SIZE: $SPACING * 128; // PC screen size.
+$PC_SIZE: $SPACING * 102.4; // PC screen size.
+$TABLET_SIZE: $SPACING * 76.8; // Tablet screen size.
+$PHONE_SIZE: $SPACING * 32; // Phone screen size.
 
 // Media queries type
 $PHONE: "PHONE";
@@ -15,6 +38,6 @@ $PC: "PC";
 $LARGE_PC: "LARGE_PC";
 
 // Transition
-$linearTransition: all 0.25s linear;
-$x4linearTransition: all 0.4s linear;
-$easeInOutTransition: all 0.25s ease-in-out;
+$LINEAR_TRANSITION: all 0.25s linear;
+$LINEAR_TRANSITION_X4: all 0.4s linear;
+$EASE_IN_OUT_TRANSITION: all 0.25s ease-in-out;

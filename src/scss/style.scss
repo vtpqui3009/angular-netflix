@@ -1,9 +1,36 @@
 // Swipper
-@import 'swiper/scss';
-@import 'swiper/scss/navigation';
-@import 'swiper/scss/pagination';
+@import "swiper/scss";
+@import "swiper/scss/navigation";
+@import "swiper/scss/pagination";
 
-
-@import "base/reset";
-@import "./base/base";
+@import "abstracts/variables";
+@import "abstracts/colors";
+@import "abstracts/media-query";
 @import "abstracts/mixin";
+
+@import "base/animation";
+@import "base/reset";
+@import "base/base";
+
+@import "components/button";
+
+
+@import "pages/home";
+@import "pages/movies";
+@import "pages/movie-detail";
+@import "pages/search";
+@import "pages/tv-series";
+@import "pages/search";
+@import "pages/persons";
+@import "pages/person-detail";
+
+
+@import "layouts/footer";
+@import "layouts/forms";
+@import "layouts/grid";
+@import "layouts/header";
+@import "layouts/navigation";
+@import "layouts/sidebar";
+
+@import "themes/theme";
+@import "src/app/app.component.scss"

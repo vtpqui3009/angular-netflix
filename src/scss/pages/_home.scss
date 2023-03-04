@@ -1,0 +1,18 @@
+.section {
+  color: $white;
+  padding: 2%;
+
+  @include responsive($LARGE_PC) {
+    padding: 2% 10%;
+  }
+}
+
+.section-title {
+  @include textTransform(uppercase, bold);
+  font-size: $TEXT_2XL;
+  padding: $SPACING * 4 0;
+}
+
+.section-title__underline-red {
+  border-bottom: calc($SPACING / 2) solid $primary-light;
+}

@@ -1,0 +1,5 @@
+<app-header-and-footer-layout>
+  <div class="person-container movies-list">
+    <app-movie-card *ngFor="let person of persons" [imageUrl]="person.imageUrl" [name]="person.name"></app-movie-card>
+  </div>
+</app-header-and-footer-layout>

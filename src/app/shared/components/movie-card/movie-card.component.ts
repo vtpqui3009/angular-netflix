@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./movie-card.component.scss'],
 })
 export class MovieCardComponent {
-  constructor(private router: Router){}
+  constructor(private router: Router) {}
   @Input() imageUrl: string;
   @Input() year: number;
   @Input() name: string;

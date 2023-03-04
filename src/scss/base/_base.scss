@@ -1,8 +1,3 @@
-@import "abstracts/colors";
-@import "abstracts/mixin";
-@import "abstracts/variables";
-@import "abstracts/media-query";
-
 html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
@@ -14,7 +9,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-  @include size($spacing);
+  @include size($SPACING);
 }
 
 body::-webkit-scrollbar-track {
@@ -35,7 +30,7 @@ a {
 
 button {
   outline: none;
-  border: 0;
+  border: $BORDER_ZERO;
   cursor: pointer;
 }
 
@@ -52,20 +47,20 @@ mat-icon {
 input,
 input:focus {
   outline: none;
-  border: 0;
+  border: $BORDER_ZERO;
 }
 
 .form-control {
   @include size(100%);
-  padding: $spacing * 1.5 $spacing * 2;
-  border-radius: calc($spacing / 2);
+  padding: $SPACING * 1.5 $SPACING * 2;
+  border-radius: $BORDER-RADIUS-SMALL;
   background-color: transparent;
-  border: 1px solid $gray;
+  border: $BORDER-GRAY;
   color: $white;
 }
 
 .form-control:focus {
-  border: 1px solid $gray;
+  border: $BORDER-GRAY;
 }
 
 .hidden-scrollbar {
@@ -99,7 +94,7 @@ input:focus {
 .movies-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: $spacing;
+  gap: $SPACING;
 
   @include responsive($TABLET) {
     grid-template-columns: repeat(3, 1fr);
@@ -110,65 +105,12 @@ input:focus {
   }
 }
 
-/* Styles for tab labels */
-::ng-deep .mdc-tab__text-label {
-  color: $white !important;
-}
-
-::ng-deep .mat-mdc-tab-labels {
-  gap: $spacing;
+.text-border-red {
+  @include textTransform(uppercase, bold);
+  font-size: $TEXT_2XL;
+  padding: 0 $SPACING * 5 $SPACING 0;
+  border-bottom: calc($SPACING / 2) solid $primary-light;
   width: max-content;
-  margin: $spacing * 4 0 $spacing * 4 auto;
-  border-bottom: none;
-  @include responsive($TABLET) {
-    margin: $spacing * 4 auto;
-  }
-
-  @include responsive($PHONE) {
-    margin: $spacing * 4 auto;
-  }
+  color: $white;
 }
 
-::ng-deep .mat-mdc-tab-body-content {
-  overflow: hidden !important;
-  margin-top: $spacing * 2;
-}
-
-::ng-deep .mat-mdc-tab-body {
-  overflow: hidden !important;
-}
-
-::ng-deep .mdc-tab.mat-mdc-tab {
-  @include flexbox(center, center);
-  background-color: transparent;
-  border-radius: calc($spacing / 2);
-  padding: $spacing * 1.2 $spacing * 1.2 !important;
-}
-
-/* Styles for the active tab label */
-::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
-  padding: calc($spacing / 2);
-  color: $primary-light;
-}
-::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
-.mat-tab-nav-bar.mat-primary .mat-ink-bar {
-  background-color: $white; // add styles properties here
-}
-.mdc-tab.mat-mdc-tab.mat-mdc-focus-indicator.mdc-tab--active.ng-star-inserted.mdc-tab-indicator--active {
-  background-color: $primary-light;
-}
-.mdc-tab.mat-mdc-tab.mat-mdc-focus-indicator {
-  font-size: $spacing * 1.2 !important;
-  font-weight: bold;
-}
-.mdc-tab-indicator__content.mdc-tab-indicator__content--underline {
-  border: none !important;
-}
-
-.gallery-thumbs {
-  height: 200px;
-  box-sizing: border-box;
-  padding: 10px 0;
-  overflow-y: hidden;
-  overflow-x: auto;
-}

@@ -1,0 +1,143 @@
+.movie-banner {
+  @include zIndexWithPosition(relative, 0);
+  @include size(100%, max-content);
+  @include responsive($PC_TABLET) {
+    background-position: top;
+    @include size(100%, 40vh);
+  }
+  @include responsive($TABLET) {
+    background-position: top;
+    @include size(100%, 40vh);
+  }
+  @include responsive($PHONE) {
+    @include size(100%, 40vh);
+    background-position: top;
+  }
+  background-image: url("https://image.tmdb.org/t/p/original/gFkHcIh7iE5G0oVOgpmY8ONQjhl.jpg");
+  object-fit: cover;
+  background-size: cover;
+  background-position: center center;
+  padding: 2%;
+}
+
+.movie-banner::before {
+  @include position(absolute, 0, 0, 0, 0);
+  content: "";
+  background-image: linear-gradient(to right, $black-dark, $black-light);
+  @include responsive($PC_TABLET) {
+    background-image: none;
+  }
+
+  @include responsive($TABLET) {
+    background-image: none;
+  }
+
+  @include responsive($PHONE) {
+    background-image: none;
+  }
+  z-index: 1;
+}
+
+.movie-banner::after {
+  @include position(absolute, 0, 0, 0, 0);
+  content: "";
+  background-image: linear-gradient(to top, $black-dark, $black-light);
+  z-index: 1;
+}
+
+.movie-header {
+  @include zIndexWithPosition(relative, 5);
+  color: $white;
+  @include flexbox(flex-start, center, row, $SPACING * 2);
+  margin-top: 10%;
+  @include responsive($TABLET) {
+    @include flexbox(flex-start, center, column, $SPACING * 2);
+  }
+  @include responsive($PHONE) {
+    @include flexbox(flex-start, center, column, $SPACING * 2);
+  }
+}
+.movie-header__poster {
+  @include size(40%, 95vh);
+
+  @include responsive($PC_TABLET) {
+    @include size(35%, 70vh);
+  }
+  @include responsive($TABLET) {
+    @include size(35%, 50vh);
+    margin: 0 auto;
+  }
+  @include responsive($PHONE) {
+    @include size(35%, 40vh);
+    margin: 0 auto;
+  }
+}
+.movie-header__content {
+  @include flexbox(flex-start, flex-start, column, $SPACING * 3);
+  @include size(60%, max-content);
+  @include responsive($TABLET) {
+    @include size(100%, max-content);
+  }
+  @include responsive($PHONE) {
+    @include size(100%, max-content);
+  }
+}
+.movie-header__content-title {
+  @include textTransform(uppercase, bold);
+  font-size: $TEXT_4XL;
+  line-height: $LINE_HEIGHT;
+  @include responsive($PC_TABLET) {
+    font-size: $TEXT_LARGE;
+  }
+  @include responsive($TABLET) {
+    font-size: $TEXT_LARGE$TEXT_LARGE;
+  }
+  @include responsive($PHONE) {
+    font-size: $TEXT_LARGE;
+  }
+}
+.movie-header__content-actions {
+  @include flexbox(center, center, row, $SPACING * 2);
+}
+.movie-header__content-actions button:first-child mat-icon {
+  color: $primary-light;
+}
+.movie-header__content-footer {
+  @include size(100%);
+}
+.movie-header__content-casts {
+  @include flexbox(center, center, row, $SPACING);
+  @include size(100%, 20vh);
+  margin-top: $SPACING * 5;
+}
+.movie-header__content-cast {
+  @include size(100%, 20vh);
+  object-fit: cover;
+  background-size: cover;
+  background-position: center center;
+  background-image: url("https://image.tmdb.org/t/p/w500/blKKsHlJIL9PmUQZB8f3YmMBW5Y.jpg");
+}
+.movie-video {
+  margin: 5% 0;
+  padding: 0 2%;
+  height: auto;
+  @include responsive($PC) {
+    margin-top: 60vh;
+  }
+  @include responsive($PHONE) {
+    margin-top: 90vh;
+  }
+  @include responsive($TABLET) {
+    margin-top: 100vh;
+  }
+}
+.SPACING {
+  margin: 3% 0;
+}
+.movie-related {
+  padding: 0 2%;
+  margin: 3% 0;
+}
+#youtube1 {
+  margin-left: 5%;
+}

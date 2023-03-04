@@ -1,9 +1,3 @@
-@import "abstracts/mixin";
-@import "components/button";
-@import "abstracts/variables";
-@import "abstracts/colors";
-@import "abstracts/media-query";
-
 .header {
   @include zIndexWithPosition(relative, 0);
   @include flexbox(center, flex-start);
@@ -29,7 +23,6 @@
   background-position: center center;
   padding: 15%;
 }
-
 .header::before {
   @include position(absolute, 0, 0, 0, 0);
   content: "";
@@ -59,32 +52,32 @@
 
 .header-content__title {
   @include responsive($PC_TABLET) {
-    font-size: $spacing * 5;
+    font-size: $TEXT_5XL;
   }
 
   @include responsive($TABLET) {
-    font-size: $spacing * 4;
+    font-size: $TEXT_4XL;
   }
 
   @include responsive($PHONE) {
-    font-size: $spacing * 3;
+    font-size: $TEXT_3XL;
   }
 
   color: $white;
-  font-size: $spacing * 6;
-  margin: $spacing * 2 0;
+  font-size: $TEXT_6XL;
+  margin: $SPACING * 2 0;
   font-weight: bold;
 }
 
 .header-content__actions {
-  @include flexbox(center, flex-start, row, $spacing);
-  margin: $spacing * 5 0;
+  @include flexbox(center, flex-start, row, $SPACING);
+  margin: $SPACING * 5 0;
 }
 
 .icon-button__text {
   @include textTransform(uppercase, bold);
-  padding: $spacing;
-  transform: translateX(-$spacing * 2);
+  padding: $SPACING;
+  transform: translateX(-$SPACING * 2);
 }
 
 .icon-button__arrow {
@@ -95,9 +88,9 @@
   @include textTruncate(3);
 
   @include responsive($PHONE) {
-    font-size: $spacing * 1.2;
+    font-size: $TEXT_MEDIUM;
   }
 
   color: $white;
-  margin-bottom: $spacing * 4;
+  margin-bottom: $SPACING * 4;
 }

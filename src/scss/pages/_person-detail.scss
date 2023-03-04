@@ -1,0 +1,25 @@
+.person-detail {
+  padding: 10% 5% 0 5%;
+}
+
+.person-detail__medias {
+  padding: 10% 0;
+}
+.persion-detail__profile {
+  @include flexbox(flex-start, center, row, $SPACING * 2);
+}
+.persion-detail__profile img {
+  @include size(25%, 65vh);
+}
+.person-detail__overview {
+  @include size(75%);
+  color: $white;
+}
+.person-detail__name {
+  @include textTransform(uppercase, bold);
+  font-size: $TEXT_3XL;
+  padding: $SPACING 0;
+}
+.person-detail__description {
+  line-height: $LINE_HEIGHT;
+}

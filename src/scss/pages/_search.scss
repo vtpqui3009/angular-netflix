@@ -1,0 +1,18 @@
+.search-tab__container {
+  @include flexbox(center, center);
+  transform: translateY($SPACING * 2);
+}
+.search-tab__input {
+  @include size(96%);
+  margin: 0 auto;
+  display: block;
+  padding: $SPACING * 1.8;
+  background-color: transparent;
+  border: $BORDER-GRAY;
+  border-radius: $BORDER-RADIUS-SMALL;
+  color: $white;
+  font-size: $TEXT_NORMAL;
+}
+.search-tab__input:focus {
+  border: $BORDER-GRAY;
+}

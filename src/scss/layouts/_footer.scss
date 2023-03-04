@@ -1,0 +1,28 @@
+footer {
+  @include flexbox(center, space-between);
+  padding: 2% 1%;
+  background-color: $footer-color;
+
+  @include responsive($TABLET) {
+    @include flexbox(center, center, column, $SPACING * 2);
+  }
+
+  @include responsive($PHONE) {
+    @include flexbox(center, center, column, $SPACING * 2);
+  }
+}
+
+.footer-logo__text {
+  font-size: $TEXT_LARGE;
+  font-weight: bold;
+  color: $white;
+}
+
+.footer-menu {
+  @include flexbox(center, center, row, $SPACING * 2);
+}
+
+.footer-menu li a {
+  color: $white;
+  font-size: $TEXT_NORMAL;
+}

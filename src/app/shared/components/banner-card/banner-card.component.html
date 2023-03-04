@@ -1,8 +1,8 @@
 <div class="header" style="background-image: url({{imageUrl}});">
     <div class="header-content">
         <div class="header-content__title">{{name}}</div>
-        <div class="header-content__actions" *ngFor="let cate of category">
-            <button class="chip-button">{{cate}}</button>
+        <div class="header-content__actions" >
+            <button *ngFor="let cate of category" class="chip-button">{{cate}}</button>
         </div>
         <p class="header-content__description">{{description}}</p>
         <button class="icon-button">

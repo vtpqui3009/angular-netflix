@@ -1,24 +1,22 @@
-@import "abstracts/variables";
-
 @mixin responsive($media) {
   @if $media ==$PHONE {
-    @media only screen and (max-width: ($tablet_size - 1)) {
+    @media only screen and (max-width: ($TABLET_SIZE - 1)) {
       @content;
     }
   } @else if $media ==$TABLET {
-    @media only screen and (min-width: ($tablet_size - 1)) and (max-width: $pc_size) {
+    @media only screen and (min-width: ($TABLET_SIZE - 1)) and (max-width: $PC_SIZE) {
       @content;
     }
   } @else if $media ==$PC {
-    @media only screen and (min-width: ($pc_size + 1)) and (min-width: $pc_size) {
+    @media only screen and (min-width: ($PC_SIZE + 1)) and (min-width: $PC_SIZE) {
       @content;
     }
   } @else if $media ==$LARGE_PC {
-    @media only screen and (min-width: ($large_pc_size + 1)) and (min-width: $large_pc_size) {
+    @media only screen and (min-width: ($LARGE_PC_SIZE + 1)) and (min-width: $LARGE_PC_SIZE) {
       @content;
     }
   } @else if $media ==$PC_TABLET {
-    @media only screen and (min-width: ($tablet_size - 1)) {
+    @media only screen and (min-width: ($TABLET_SIZE - 1)) {
       @content;
     }
   }

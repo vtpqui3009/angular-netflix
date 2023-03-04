@@ -1,5 +1,6 @@
 import { MovieCard } from '../model/movie-card';
 import { BannerCard } from '../model/banner-card';
+import { Person } from '../model/person';
 export const MOCK_DATA: MovieCard[] = [
   {
     imageUrl: 'https://image.tmdb.org/t/p/w500/vwDew97AtBlmD6Mj4kK5BQqm2XK.jpg',
@@ -133,5 +134,47 @@ export const MOVIES_DATA: MovieCard[] = [
     imageUrl: 'https://image.tmdb.org/t/p/w500/kuf6dutpsT0vSVehic3EZIqkOBt.jpg',
     year: 2022,
     name: 'Black Panther: Wakada Forever',
+  },
+];
+export const PERSON_MOCK_DATA: Person[] = [
+  {
+    imageUrl: 'https://image.tmdb.org/t/p/w500/7vrTWF8PxQogF6o9ORZprYQoDOr.jpg',
+    name: 'Angeli Khang',
+  },
+  {
+    imageUrl: 'https://image.tmdb.org/t/p/w500/7vrTWF8PxQogF6o9ORZprYQoDOr.jpg',
+    name: 'Angeli Khang',
+  },
+  {
+    imageUrl: 'https://image.tmdb.org/t/p/w500/7vrTWF8PxQogF6o9ORZprYQoDOr.jpg',
+    name: 'Angeli Khang',
+  },
+  {
+    imageUrl: 'https://image.tmdb.org/t/p/w500/7vrTWF8PxQogF6o9ORZprYQoDOr.jpg',
+    name: 'Angeli Khang',
+  },
+  {
+    imageUrl: 'https://image.tmdb.org/t/p/w500/7vrTWF8PxQogF6o9ORZprYQoDOr.jpg',
+    name: 'Angeli Khang',
+  },
+  {
+    imageUrl: 'https://image.tmdb.org/t/p/w500/7vrTWF8PxQogF6o9ORZprYQoDOr.jpg',
+    name: 'Angeli Khang',
+  },
+  {
+    imageUrl: 'https://image.tmdb.org/t/p/w500/7vrTWF8PxQogF6o9ORZprYQoDOr.jpg',
+    name: 'Angeli Khang',
+  },
+  {
+    imageUrl: 'https://image.tmdb.org/t/p/w500/7vrTWF8PxQogF6o9ORZprYQoDOr.jpg',
+    name: 'Angeli Khang',
+  },
+  {
+    imageUrl: 'https://image.tmdb.org/t/p/w500/7vrTWF8PxQogF6o9ORZprYQoDOr.jpg',
+    name: 'Angeli Khang',
+  },
+  {
+    imageUrl: 'https://image.tmdb.org/t/p/w500/7vrTWF8PxQogF6o9ORZprYQoDOr.jpg',
+    name: 'Angeli Khang',
   },
 ];

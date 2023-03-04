@@ -1,0 +1,59 @@
+@import "abstracts/media-query";
+@import "abstracts/mixin";
+@import "abstracts/variables";
+@import "abstracts/colors";
+
+/* Styles for tab labels */
+::ng-deep .mdc-tab__text-label {
+  color: $white !important;
+}
+
+::ng-deep .mat-mdc-tab-labels {
+  gap: $SPACING;
+  width: max-content;
+  margin: $SPACING * 4 0 $SPACING * 4 auto;
+  border-bottom: none;
+  @include responsive($TABLET) {
+    margin: $SPACING * 4 auto;
+  }
+
+  @include responsive($PHONE) {
+    margin: $SPACING * 4 auto;
+  }
+}
+
+::ng-deep .mat-mdc-tab-body-content {
+  overflow: hidden !important;
+  margin-top: $SPACING * 2;
+}
+
+::ng-deep .mat-mdc-tab-body {
+  overflow: hidden !important;
+}
+
+::ng-deep .mdc-tab.mat-mdc-tab {
+  @include flexbox(center, center);
+  background-color: transparent;
+  border-radius: $BORDER-RADIUS-SMALL;
+  padding: $SPACING * 1.2 $SPACING * 1.2 !important;
+}
+
+/* Styles for the active tab label */
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  padding: calc($SPACING / 2);
+  color: $primary-light;
+}
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: $white; // add styles properties here
+}
+.mdc-tab.mat-mdc-tab.mat-mdc-focus-indicator.mdc-tab--active.ng-star-inserted.mdc-tab-indicator--active {
+  background-color: $primary-light;
+}
+.mdc-tab.mat-mdc-tab.mat-mdc-focus-indicator {
+  font-size: $TEXT_MEDIUM !important;
+  font-weight: bold;
+}
+.mdc-tab-indicator__content.mdc-tab-indicator__content--underline {
+  border: $BORDER-NONE;
+}

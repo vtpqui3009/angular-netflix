@@ -1,105 +1,105 @@
-<app-navigation></app-navigation>
-<div class="movie-banner">
-  <div class="movie-header">
-    <img class="movie-header__poster" src="https://image.tmdb.org/t/p/original/gFkHcIh7iE5G0oVOgpmY8ONQjhl.jpg" />
-    <div class="movie-header__content">
-      <div class="movie-header__content-title">
-        Black Panther: Wakanda Forever 2022
-      </div>
-      <div class="movie-header__content-actions">
-        <button class="chip-button">Action</button>
-        <button class="chip-button">Adventure</button>
-      </div>
-      <p class="movie-header__content-description">
-        Queen Ramonda, Shuri, M’Baku, Okoye and the Dora Milaje fight to protect
-        their nation from intervening world powers in the wake of King
-        T’Challa’s death. As the Wakandans strive to embrace their next chapter,
-        the heroes must band together with the help of War Dog Nakia and Everett
-        Ross and forge a new path for the kingdom of Wakanda.
-      </p>
-      <div class="movie-header__content-actions">
-        <button mat-icon-button>
-          <mat-icon>favorite_border</mat-icon>
-        </button>
-        <button class="icon-button">
-          <button mat-icon-button class="icon-button__arrow">
-            <mat-icon>arrow_drop_down</mat-icon>
+<app-header-and-footer-layout>
+  <div class="movie-banner">
+    <div class="movie-header">
+      <img class="movie-header__poster" src="https://image.tmdb.org/t/p/original/gFkHcIh7iE5G0oVOgpmY8ONQjhl.jpg" />
+      <div class="movie-header__content">
+        <div class="movie-header__content-title">
+          Black Panther: Wakanda Forever 2022
+        </div>
+        <div class="movie-header__content-actions">
+          <button class="chip-button">Action</button>
+          <button class="chip-button">Adventure</button>
+        </div>
+        <p class="movie-header__content-description">
+          Queen Ramonda, Shuri, M’Baku, Okoye and the Dora Milaje fight to protect
+          their nation from intervening world powers in the wake of King
+          T’Challa’s death. As the Wakandans strive to embrace their next chapter,
+          the heroes must band together with the help of War Dog Nakia and Everett
+          Ross and forge a new path for the kingdom of Wakanda.
+        </p>
+        <div class="movie-header__content-actions">
+          <button mat-icon-button>
+            <mat-icon>favorite_border</mat-icon>
           </button>
-          <span class="icon-button__text">Watch now</span>
-        </button>
-      </div>
-      <div class="movie-header__content-footer">
-        <div class="text-border-red">CAST</div>
+          <button class="icon-button">
+            <button mat-icon-button class="icon-button__arrow">
+              <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+            <span class="icon-button__text">Watch now</span>
+          </button>
+        </div>
+        <div class="movie-header__content-footer">
+          <div class="text-border-red">CAST</div>
 
-        <swiper [config]="castConfig">
-          <ng-template swiperSlide>
-            <div class="movie-header__content-cast"></div>
-          </ng-template>
+          <swiper [config]="castConfig">
+            <ng-template swiperSlide>
+              <div class="movie-header__content-cast"></div>
+            </ng-template>
 
-          <ng-template swiperSlide>
-            <div class="movie-header__content-cast"></div>
-          </ng-template>
-          <ng-template swiperSlide>
-            <div class="movie-header__content-cast"></div>
-          </ng-template>
-          <ng-template swiperSlide>
-            <div class="movie-header__content-cast"></div>
-          </ng-template>
-          <ng-template swiperSlide>
-            <div class="movie-header__content-cast"></div>
-          </ng-template>
-          <ng-template swiperSlide>
-            <div class="movie-header__content-cast"></div>
-          </ng-template>
-        </swiper>
+            <ng-template swiperSlide>
+              <div class="movie-header__content-cast"></div>
+            </ng-template>
+            <ng-template swiperSlide>
+              <div class="movie-header__content-cast"></div>
+            </ng-template>
+            <ng-template swiperSlide>
+              <div class="movie-header__content-cast"></div>
+            </ng-template>
+            <ng-template swiperSlide>
+              <div class="movie-header__content-cast"></div>
+            </ng-template>
+            <ng-template swiperSlide>
+              <div class="movie-header__content-cast"></div>
+            </ng-template>
+          </swiper>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="movie-video">
-  <div class="text-border-red spacing">MOVIES</div>
-  <swiper [config]="config">
-    <ng-template swiperSlide>
-      <iframe id="youtube1" width="90%" height="500" src="https://www.youtube-nocookie.com/embed/ujkhtNNiI3Y"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-    </ng-template>
-    <ng-template swiperSlide>
-      <iframe width="90%" height="500" src="https://www.youtube-nocookie.com/embed/1Q8fG0TtVAY"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-    </ng-template>
-    <ng-template swiperSlide>
-      <iframe width="90%" height="500" src="https://www.youtube-nocookie.com/embed/ujkhtNNiI3Y"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-    </ng-template>
-    <ng-template swiperSlide>
-      <iframe width="90%" height="500" src="https://www.youtube-nocookie.com/embed/ujkhtNNiI3Y"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-    </ng-template>
-    <ng-template swiperSlide>
-      <iframe width="100%" height="500" src="https://www.youtube-nocookie.com/embed/ujkhtNNiI3Y"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-    </ng-template>
-    <ng-template swiperSlide>
-      <iframe width="90%" height="500" src="https://www.youtube-nocookie.com/embed/ujkhtNNiI3Y"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-    </ng-template>
-  </swiper>
-</div>
-<div class="movie-related">
-  <div class="text-border-red spacing">you may also like</div>
+  <div class="movie-video">
+    <div class="text-border-red spacing">MOVIES</div>
+    <swiper [config]="config">
+      <ng-template swiperSlide>
+        <iframe id="youtube1" width="90%" height="500" src="https://www.youtube-nocookie.com/embed/ujkhtNNiI3Y"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </ng-template>
+      <ng-template swiperSlide>
+        <iframe width="90%" height="500" src="https://www.youtube-nocookie.com/embed/1Q8fG0TtVAY"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </ng-template>
+      <ng-template swiperSlide>
+        <iframe width="90%" height="500" src="https://www.youtube-nocookie.com/embed/ujkhtNNiI3Y"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </ng-template>
+      <ng-template swiperSlide>
+        <iframe width="90%" height="500" src="https://www.youtube-nocookie.com/embed/ujkhtNNiI3Y"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </ng-template>
+      <ng-template swiperSlide>
+        <iframe width="100%" height="500" src="https://www.youtube-nocookie.com/embed/ujkhtNNiI3Y"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </ng-template>
+      <ng-template swiperSlide>
+        <iframe width="90%" height="500" src="https://www.youtube-nocookie.com/embed/ujkhtNNiI3Y"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </ng-template>
+    </swiper>
+  </div>
+  <div class="movie-related">
+    <div class="text-border-red spacing">you may also like</div>
 
-  <app-movie-swipper-list [movies]="movies"></app-movie-swipper-list>
-</div>
-<app-footer></app-footer>
+    <app-movie-swipper-list [movies]="movies"></app-movie-swipper-list>
+  </div>
+</app-header-and-footer-layout>

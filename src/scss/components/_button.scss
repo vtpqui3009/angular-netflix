@@ -1,20 +1,16 @@
-@import "abstracts/colors";
-@import "abstracts/variables";
-@import "abstracts/mixin";
-
 .primary-button {
   @include textTransform(uppercase, bold);
-  padding: $spacing $spacing * 2;
-  border-radius: $spacing / 2;
+  padding: $SPACING $SPACING * 2;
+  border-radius: $BORDER-RADIUS-SMALL;
   background-color: $primary-light;
   color: $white;
-  font-size: $spacing * 1.4;
+  font-size: $TEXT_MEDIUM;
 }
 
 .primary-button:hover,
 .icon-button:hover,
 .full-width__button {
-  transition: $linearTransition;
+  transition: $LINEAR_TRANSITION;
   background-color: $primary-dark;
 }
 
@@ -22,12 +18,12 @@
   @include flexbox(center, flex-start);
   background-color: $primary-light;
   color: $white;
-  border-radius: $spacing / 2;
+  border-radius: $BORDER-RADIUS-SMALL;
 }
 
 .chip-button {
-  padding: $spacing * 0.8 $spacing;
-  border-radius: $spacing * 2;
+  padding: $SPACING * 0.8 $SPACING;
+  border-radius: $BORDER-RADIUS-LARGE;
   background-color: $primary-light;
   color: $white;
 }
@@ -35,8 +31,8 @@
 .full-width__button {
   @include size(100%);
   @include textTransform(uppercase, bold);
-  padding: $spacing * 1.2 0;
-  border-radius: $spacing / 2;
+  padding: $SPACING * 1.2 0;
+  border-radius: $BORDER-RADIUS-SMALL;
 }
 
 .full-width__button {

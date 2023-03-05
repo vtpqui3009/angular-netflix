@@ -4,8 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Genre } from 'src/app/shared/models/genre';
-import { IVY_MOVIE_URL } from 'src/app/shared/constants/constant';
-import { TMDB_IMAGE_URL } from 'src/app/shared/constants/constant';
+import {
+  IVY_MOVIE_URL,
+  TMDB_IMAGE_URL,
+  LIMIT_PAGE_TMDB_ALLOW,
+} from 'src/app/shared/constants/constant';
+import { getRandomNumber } from 'src/app/shared/utilities/movie.util';
 
 @Injectable({
   providedIn: 'root',
@@ -18,29 +22,36 @@ export class MovieService {
   getAllGenresOfMovie(): Observable<Genre[]> {
     return this.http
       .get(IVY_MOVIE_URL.GENRES_ALL_OF_MOVIE_URL)
-      .pipe(map((response) => response as Genre[]));
+      .pipe(map((response) => response['genres'] as Genre[]));
   }
 
-  getPopularMovies(): Observable<MovieCard[]> {
-    return this.http.get(IVY_MOVIE_URL.POPULAR_MOVIES_URL).pipe(
+  getMovies(
+    url: string,
+    isSelectedLagerImage: boolean = false,
+    isRenderWithPageParams: boolean = false
+  ): Observable<MovieCard[]> {
+    const randomPage = getRandomNumber(1, LIMIT_PAGE_TMDB_ALLOW);
+    let modifiedUrl = isRenderWithPageParams
+      ? url + `&page=${randomPage}`
+      : url;
+    return this.http.get(modifiedUrl).pipe(
       map((response) => {
-        let popularMovies: MovieCard[] = [];
-        response['results'].forEach((movie: any) => {
-          const picked = (({
-            id,
-            imageUrl: poster_path,
-            year: release_date,
-            title,
-          }) => ({
-            id,
-            imageUrl: TMDB_IMAGE_URL + poster_path,
-            year: new Date(release_date).getFullYear(),
-            title,
-          }))(movie);
-
-          popularMovies.push(picked);
+        let movies: MovieCard[] = [];
+        response['results'].map((movie: any) => {
+          movies.push({
+            id: movie.id,
+            imageUrl: isSelectedLagerImage
+              ? TMDB_IMAGE_URL + movie.backdrop_path
+              : TMDB_IMAGE_URL + movie.poster_path,
+            year: new Date(
+              movie.release_date || movie.first_air_date
+            ).getFullYear(),
+            name: movie.title || movie.name,
+            overview: movie.overview,
+            genres: movie.genre_ids,
+          });
         });
-        return popularMovies as MovieCard[];
+        return movies;
       })
     );
   }

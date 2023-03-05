@@ -3,6 +3,6 @@ export interface MovieCard {
   imageUrl: string;
   year: number;
   name?: string;
-  genres?: string[];
+  genres?: any;
   overview?: string;
 }

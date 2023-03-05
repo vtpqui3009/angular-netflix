@@ -1,6 +1,6 @@
 <swiper [config]="config">
-  <ng-template swiperSlide *ngFor="let banner of banners">
-    <app-banner-card [imageUrl]="banner.imageUrl" [description]="banner.description" [name]="banner.name"
-      [category]="banner.category"></app-banner-card>
+  <ng-template swiperSlide *ngFor="let movie of trendingMoviesWithinDay">
+    <app-banner-card [imageUrl]="movie.imageUrl" [overview]="movie.overview" [name]="movie.name"
+      [genres]="movie.genres"></app-banner-card>
   </ng-template>
 </swiper>

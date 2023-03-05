@@ -3,13 +3,13 @@
         <mat-tab-group>
             <mat-tab label="POPULAR">
                 <ul class="movies-list">
-                    <app-movie-card *ngFor="let movie of movies" [imageUrl]="movie.imageUrl" [year]="movie.year"
+                    <app-movie-card *ngFor="let movie of popularMovies" [imageUrl]="movie.imageUrl" [year]="movie.year"
                         [name]="movie.name"></app-movie-card>
                 </ul>
             </mat-tab>
             <mat-tab label="TOP RATED">
                 <ul class="movies-list">
-                    <app-movie-card *ngFor="let movie of movies" [imageUrl]="movie.imageUrl" [year]="movie.year"
+                    <app-movie-card *ngFor="let movie of topRatedMovies" [imageUrl]="movie.imageUrl" [year]="movie.year"
                         [name]="movie.name"></app-movie-card>
                 </ul>
             </mat-tab>

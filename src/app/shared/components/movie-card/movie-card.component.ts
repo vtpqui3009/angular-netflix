@@ -10,6 +10,7 @@ export class MovieCardComponent {
   @Input() imageUrl: string;
   @Input() year: number;
   @Input() name: string;
+  @Input() movieId: number;
   href: string;
   ngOnInit(): void {
     this.href = this.router.url;

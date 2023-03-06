@@ -1,17 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 // import Swiper core and required modules
 import { SwiperOptions } from 'swiper';
-import { MOVIES_DATA } from 'src/app/shared/mock/mock-data';
 import { MovieCard } from 'src/app/shared/models/movie-card';
+import { MovieDetail } from 'src/app/shared/models/movie-detail';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { MovieService } from 'src/app/core/services/movie.service';
+
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.scss'],
 })
 export class MovieDetailComponent implements OnInit {
-  movies: MovieCard[] = [];
+  constructor(
+    private route: ActivatedRoute,
+    private movieService: MovieService
+  ) {}
+  movie: MovieDetail;
+  movieId: number;
+  movieSubscription: Subscription;
+  youtubeVideoKey = 'https://www.youtube-nocookie.com/embed/';
   ngOnInit(): void {
-    this.movies = MOVIES_DATA;
+    this.movieId = +this.route.snapshot.paramMap.get('id');
+    this.movieSubscription = this.subscribeMovie();
+  }
+  subscribeMovie(): Subscription {
+    const url = `https://api.themoviedb.org/3/movie/${this.movieId}?api_key=fa808d4f7fd1ba7f2fedd0e4ebb1add1&append_to_response=videos`;
+    // console.log(url);
+    return this.movieService.getMovieDetail(url).subscribe((response) => {
+      this.movie = response;
+      // console.log(this.movie.videos);
+      // console.log(youtubeVideoKey +  this.movie.video.key)
+    });
   }
   config: SwiperOptions = {
     slidesPerView: 1,

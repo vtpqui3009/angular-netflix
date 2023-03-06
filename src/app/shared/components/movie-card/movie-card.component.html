@@ -1,4 +1,4 @@
-<a routerLink="/movies/test" class="text-white">
+<a [routerLink]="['/movies', movieId]" class="text-white">
     <li class="section-movie__list-item" style="background-image: url({{imageUrl}});"
         [class.movieHeight]="href == '/movies' || href == '/tv-series' || href == '/persons'">
         <div class="section-movie__backdrop">

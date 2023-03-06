@@ -6,7 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SwiperModule } from 'swiper/angular';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './core/interceptors/loading-interceptor';
 
 import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
 import { HeaderAndFooterLayoutComponent } from './core/layouts/header-and-footer-layout/header-and-footer-layout.component';
@@ -26,6 +27,7 @@ import { BannerCardComponent } from './shared/components/banner-card/banner-card
 import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
 import { PersonPageComponent } from './pages/person-page/person-page.component';
 import { PersonDetailPageComponent } from './pages/person-detail-page/person-detail-page.component';
+import { LoadingScreenComponent } from './shared/components/loading-screen/loading-screen.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +47,7 @@ import { PersonDetailPageComponent } from './pages/person-detail-page/person-det
     MovieDetailComponent,
     PersonPageComponent,
     PersonDetailPageComponent,
+    LoadingScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,13 @@ import { PersonDetailPageComponent } from './pages/person-detail-page/person-det
     SwiperModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

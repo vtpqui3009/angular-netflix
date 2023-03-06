@@ -8,6 +8,7 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { MovieDetailComponent } from './pages/movie-detail/movie-detail.component';
 import { PersonPageComponent } from './pages/person-page/person-page.component';
 import { PersonDetailPageComponent } from './pages/person-detail-page/person-detail-page.component';
+
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   {

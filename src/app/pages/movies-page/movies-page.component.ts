@@ -3,6 +3,7 @@ import { MovieCard } from 'src/app/shared/models/movie-card';
 import { MovieService } from 'src/app/core/services/movie.service';
 import { Subscription } from 'rxjs';
 import { IVY_MOVIE_URL } from 'src/app/shared/constants/constant';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-movies-page',
@@ -13,35 +14,34 @@ export class MoviesPageComponent implements OnInit {
   popularMovies: MovieCard[] = [];
   topRatedMovies: MovieCard[] = [];
 
-  popularMoviesSubscription: Subscription;
-  topRatedMoviesSubscription: Subscription;
-
   constructor(private movieService: MovieService) {}
 
+  moviesSubscription: Subscription;
+
   ngOnInit(): void {
-    this.popularMoviesSubscription = this.subscribePopularMovies();
-    this.topRatedMoviesSubscription = this.subscribeTopRatedMovies();
+    this.moviesSubscription = this.subscribeMovies();
   }
-  subscribePopularMovies() {
-    return this.movieService
-      .getMovies(IVY_MOVIE_URL.POPULAR_MOVIES_URL, false, true)
-      .subscribe((movies) => {
-        this.popularMovies = movies;
-      });
-  }
-  subscribeTopRatedMovies() {
-    return this.movieService
-      .getMovies(IVY_MOVIE_URL.TOP_RATED_MOVIES_URL, false, true)
-      .subscribe((movies) => {
-        this.topRatedMovies = movies;
-      });
+
+  subscribeMovies(): Subscription {
+    return forkJoin({
+      requestOne: this.movieService.getMovies(
+        IVY_MOVIE_URL.TOP_RATED_MOVIES_URL,
+        false,
+        true
+      ),
+      requestTwo: this.movieService.getMovies(
+        IVY_MOVIE_URL.TOP_RATED_MOVIES_URL,
+        false,
+        true
+      ),
+    }).subscribe(({ requestOne, requestTwo }) => {
+      this.popularMovies = requestOne;
+      this.topRatedMovies = requestTwo;
+    });
   }
   ngOnDestroy() {
-    if (this.popularMoviesSubscription) {
-      this.popularMoviesSubscription.unsubscribe();
-    }
-    if (this.topRatedMoviesSubscription) {
-      this.topRatedMoviesSubscription.unsubscribe();
+    if (this.moviesSubscription) {
+      this.moviesSubscription.unsubscribe();
     }
   }
 }

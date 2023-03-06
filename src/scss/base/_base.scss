@@ -113,4 +113,15 @@ input:focus {
   width: max-content;
   color: $white;
 }
-
+.container {
+  @include size(100%, 100vh);
+  overflow-y: hidden;
+}
+.loading-sreen {
+  @include flexbox(center, center);
+  @include size(100%, 100%);
+}
+mat-progress-bar {
+  // @include position($SPACING * 6.4, unset, unset, unset);
+  transform: translateY($SPACING * 6.4) !important;
+}

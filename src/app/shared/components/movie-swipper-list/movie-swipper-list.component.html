@@ -1,5 +1,6 @@
 <swiper [config]="config">
     <ng-template swiperSlide *ngFor="let movie of movies">
-        <app-movie-card [imageUrl]="movie.imageUrl" [year]="movie.year" [name]="movie.name"></app-movie-card>
+        <app-movie-card [movieId]="movie.id" [imageUrl]="movie.imageUrl" [year]="movie.year"
+            [name]="movie.name"></app-movie-card>
     </ng-template>
 </swiper>

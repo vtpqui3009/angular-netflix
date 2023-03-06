@@ -2,21 +2,22 @@ import { MovieCard } from 'src/app/shared/models/movie-card';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Genre } from 'src/app/shared/models/genre';
+import { MovieDetail } from 'src/app/shared/models/movie-detail';
 import {
   IVY_MOVIE_URL,
   TMDB_IMAGE_URL,
   LIMIT_PAGE_TMDB_ALLOW,
 } from 'src/app/shared/constants/constant';
 import { getRandomNumber } from 'src/app/shared/utilities/movie.util';
-
 @Injectable({
   providedIn: 'root',
 })
 export class MovieService {
   popularMovies: MovieCard[] = [];
   genres: Genre[] = [];
+  isLoading = new BehaviorSubject<Boolean>(false);
   constructor(private http: HttpClient) {}
 
   getAllGenresOfMovie(): Observable<Genre[]> {
@@ -52,6 +53,26 @@ export class MovieService {
           });
         });
         return movies;
+      })
+    );
+  }
+
+  getMovieDetail(url: string): Observable<MovieDetail> {
+    return this.http.get(url).pipe(
+      map((response) => {
+        // console.log(response);
+        let movie: MovieDetail;
+        movie = {
+          id: response['id'],
+          posterUrl: TMDB_IMAGE_URL + response['poster_path'],
+          backdropUrl: TMDB_IMAGE_URL + response['backdrop_path'],
+          name: response['title'],
+          overview: response['overview'],
+          genres: response['genres'],
+          videos: response['videos']['results'],
+        };
+        console.log(movie);
+        return movie;
       })
     );
   }

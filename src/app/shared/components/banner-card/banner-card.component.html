@@ -5,11 +5,11 @@
             <button *ngFor="let genre of genres" class="chip-button">{{genre.name}}</button>
         </div>
         <p class="header-content__description">{{overview}}</p>
-        <button class="icon-button">
+        <a [routerLink]="['/media', id]" class="icon-button">
             <button mat-icon-button class="icon-button__arrow">
                 <mat-icon>arrow_drop_down</mat-icon>
             </button>
             <span class="icon-button__text">Watch now</span>
-        </button>
+        </a>
     </div>
 </div>

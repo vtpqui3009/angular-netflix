@@ -21,6 +21,9 @@
     margin: $SPACING * 4 auto;
   }
 }
+::ng-deep .search-tab__container .mat-mdc-tab-body-wrapper {
+  @include size(100%);
+}
 
 ::ng-deep .mat-mdc-tab-body-content {
   overflow: hidden !important;

@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 // import Swiper core and required modules
 import { SwiperOptions } from 'swiper';
-import { MovieCard } from 'src/app/shared/models/movie-card';
 import { MovieDetail } from 'src/app/shared/models/movie-detail';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute, RoutesRecognized } from '@angular/router';
+import { forkJoin, Subscription } from 'rxjs';
 import { MovieService } from 'src/app/core/services/movie.service';
+import { Person } from 'src/app/shared/models/person';
+import { Review } from 'src/app/shared/models/review';
+import { filter, pairwise } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { MovieCard } from 'src/app/shared/models/movie-card';
+import { YoutubeVideo } from 'src/app/shared/models/youtube-video';
+import { TvService } from 'src/app/core/services/tv.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -15,24 +21,98 @@ import { MovieService } from 'src/app/core/services/movie.service';
 export class MovieDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private movieService: MovieService
-  ) {}
-  movie: MovieDetail;
-  movieId: number;
-  movieSubscription: Subscription;
-  youtubeVideoKey = 'https://www.youtube-nocookie.com/embed/';
-  ngOnInit(): void {
-    this.movieId = +this.route.snapshot.paramMap.get('id');
-    this.movieSubscription = this.subscribeMovie();
+    private router: Router,
+    private movieService: MovieService,
+    private tvService: TvService
+  ) {
+    this.router.events
+      .pipe(
+        filter((evt: any) => evt instanceof RoutesRecognized),
+        pairwise()
+      )
+      .subscribe((events: RoutesRecognized[]) => {
+        this.movieService.previousUrl =
+          events[0].urlAfterRedirects.split('/')[1];
+      });
   }
-  subscribeMovie(): Subscription {
-    const url = `https://api.themoviedb.org/3/movie/${this.movieId}?api_key=fa808d4f7fd1ba7f2fedd0e4ebb1add1&append_to_response=videos`;
-    // console.log(url);
-    return this.movieService.getMovieDetail(url).subscribe((response) => {
-      this.movie = response;
-      // console.log(this.movie.videos);
-      // console.log(youtubeVideoKey +  this.movie.video.key)
-    });
+  movie: MovieDetail;
+  relatedVideos: MovieCard[];
+  casts: Person[] = [];
+  reviews: Review[] = [];
+  movieVideo: YoutubeVideo[] = [];
+  id: number;
+  isToogleReview = false;
+  reviewId: number;
+  previousUrl = '';
+
+  movieSubscription: Subscription;
+  movieDetailSubscription: Subscription;
+  previousRouteSubscription: Subscription;
+
+  ngOnInit(): void {
+    this.id = +this.route.snapshot.paramMap.get('id');
+    if (this.movieService.previousUrl === 'tv-series') {
+      this.movieDetailSubscription = this.subscribeTVDetail();
+    } else {
+      this.movieDetailSubscription = this.subscribeMovieDetail();
+    }
+  }
+
+  subscribePreviousRoute(): Subscription {
+    return this.router.events
+      .pipe(
+        filter((evt: any) => evt instanceof RoutesRecognized),
+        pairwise()
+      )
+      .subscribe((events: RoutesRecognized[]) => {
+        this.movieService.previousUrl =
+          events[0].urlAfterRedirects.split('/')[1];
+      });
+  }
+  handleToogleReview(reviewId: number) {
+    this.reviewId = reviewId;
+    this.isToogleReview = !this.isToogleReview;
+  }
+
+  subscribeMovieDetail(): Subscription {
+    return forkJoin({
+      getMovieDetail: this.movieService.getMovieDetail(this.id),
+      getCasts: this.movieService.getMovieCasts(this.id),
+      getRelatedMovies: this.movieService.getRelatedMovies(this.id),
+      getMovieReview: this.movieService.getMovieReview(this.id),
+    }).subscribe(
+      ({ getMovieDetail, getCasts, getRelatedMovies, getMovieReview }) => {
+        this.movie = getMovieDetail;
+        this.casts = getCasts;
+        this.relatedVideos = getRelatedMovies;
+        this.reviews = getMovieReview;
+        this.movieVideo = this.movie.videos;
+      }
+    );
+  }
+
+  subscribeTVDetail(): Subscription {
+    return forkJoin({
+      getTVDetail: this.tvService.getTvSeriesDetail(this.id),
+      getCasts: this.tvService.getTVCasts(this.id),
+      getRelatedMovies: this.tvService.getRelatedTV(this.id),
+      getMovieReview: this.tvService.getTVReview(this.id),
+      getMovieVideos: this.tvService.getTvVideos(this.id),
+    }).subscribe(
+      ({
+        getTVDetail,
+        getCasts,
+        getRelatedMovies,
+        getMovieReview,
+        getMovieVideos,
+      }) => {
+        this.movie = getTVDetail;
+        this.casts = getCasts;
+        this.relatedVideos = getRelatedMovies;
+        this.reviews = getMovieReview;
+        this.movieVideo = getMovieVideos;
+      }
+    );
   }
   config: SwiperOptions = {
     slidesPerView: 1,
@@ -72,4 +152,13 @@ export class MovieDetailComponent implements OnInit {
       },
     },
   };
+
+  ngOnDestroy() {
+    if (this.movieDetailSubscription) {
+      this.movieDetailSubscription.unsubscribe();
+    }
+    if (this.previousRouteSubscription) {
+      this.previousRouteSubscription.unsubscribe();
+    }
+  }
 }

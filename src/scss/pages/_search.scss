@@ -1,10 +1,11 @@
 .search-tab__container {
-  @include flexbox(center, center);
+  @include flexbox(center, center, column);
+  @include size(100%);
   transform: translateY($SPACING * 2);
+  // margin-bottom: 2%;
 }
 .search-tab__input {
   @include size(96%);
-  margin: 0 auto;
   display: block;
   padding: $SPACING * 1.8;
   background-color: transparent;
@@ -12,7 +13,11 @@
   border-radius: $BORDER-RADIUS-SMALL;
   color: $white;
   font-size: $TEXT_NORMAL;
+  z-index: 1;
 }
 .search-tab__input:focus {
   border: $BORDER-GRAY;
+}
+.search-list {
+  padding: 2%;
 }

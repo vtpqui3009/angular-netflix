@@ -7,5 +7,5 @@ export interface MovieDetail {
   name: string;
   genres: Genre[];
   overview: string;
-  videos: any;
+  videos?: any;
 }

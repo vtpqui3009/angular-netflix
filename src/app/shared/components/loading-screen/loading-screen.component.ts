@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MovieService } from 'src/app/core/services/movie.service';
+import { LoaderService } from 'src/app/core/services/loader.service';
 @Component({
   selector: 'app-loading-screen',
   templateUrl: './loading-screen.component.html',
@@ -7,9 +7,5 @@ import { MovieService } from 'src/app/core/services/movie.service';
 })
 export class LoadingScreenComponent {
   isLoading: Boolean = false;
-  constructor(private movieService: MovieService) {
-    this.movieService.isLoading.subscribe((response) => {
-      this.isLoading = response;
-    });
-  }
+  constructor(public loader: LoaderService) {}
 }

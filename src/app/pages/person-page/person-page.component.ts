@@ -1,6 +1,6 @@
+import { PERSON_MOCK_DATA } from './../../shared/mock/mock-data';
 import { Component, OnInit } from '@angular/core';
 import { Person } from 'src/app/shared/models/person';
-import { PERSON_MOCK_DATA } from 'src/app/shared/mock/mock-data';
 @Component({
   selector: 'app-person-page',
   templateUrl: './person-page.component.html',

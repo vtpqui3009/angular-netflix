@@ -1,70 +1,72 @@
 <app-header-and-footer-layout>
-  <div class="movie-banner" style="background-image: url({{movie?.backdropUrl}})">
-    <div class="movie-header">
-      <img class="movie-header__poster" src={{movie?.posterUrl}} />
-      <div class="movie-header__content">
-        <div class="movie-header__content-title">
-          {{movie?.name}}
-        </div>
-        <div class="movie-header__content-actions">
-          <button *ngFor="let genre of movie?.genres" class="chip-button">{{genre?.name}}</button>
-        </div>
-        <p class="movie-header__content-description">
-          {{movie?.overview}}
-        </p>
-        <div class="movie-header__content-actions">
-          <button mat-icon-button>
-            <mat-icon>favorite_border</mat-icon>
-          </button>
-          <button class="icon-button">
-            <button mat-icon-button class="icon-button__arrow">
-              <mat-icon>arrow_drop_down</mat-icon>
+  <div class="layout-container">
+    <div class="movie-banner" style="background-image: url({{movie?.backdropUrl}})">
+      <div class="movie-header">
+        <img class="movie-header__poster" [src]='movie?.posterUrl' />
+        <div class="movie-header__content">
+          <div class="movie-header__content-title">
+            {{movie?.name}}
+          </div>
+          <div class="movie-header__content-actions">
+            <button *ngFor="let genre of movie?.genres" class="chip-button">{{genre?.name}}</button>
+          </div>
+          <p class="movie-header__content-description">
+            {{movie?.overview}}
+          </p>
+          <div class="movie-header__content-actions">
+            <button mat-icon-button>
+              <mat-icon>favorite_border</mat-icon>
             </button>
-            <span class="icon-button__text">Watch now</span>
-          </button>
-        </div>
-        <div class="movie-header__content-footer">
-          <div class="text-border-red">CAST</div>
+            <button class="icon-button">
+              <button mat-icon-button class="icon-button__arrow">
+                <mat-icon>arrow_drop_down</mat-icon>
+              </button>
+              <span class="icon-button__text">Watch now</span>
+            </button>
+          </div>
+          <div class="movie-header__content-footer">
+            <div class="text-border-red">CAST</div>
+            <swiper [config]="castConfig">
+              <ng-template swiperSlide *ngFor="let cast of casts">
+                <a [routerLink]="['/persons', cast.id]">
+                  <div class="movie-header__content-cast-avt" style="background-image: url({{cast.avatar}})"></div>
+                  <div class="movie-header__content-cast-name">{{cast.name}}</div>
+                </a>
+              </ng-template>
+            </swiper>
 
-          <swiper [config]="castConfig">
-            <ng-template swiperSlide>
-              <div class="movie-header__content-cast"></div>
-            </ng-template>
-
-            <ng-template swiperSlide>
-              <div class="movie-header__content-cast"></div>
-            </ng-template>
-            <ng-template swiperSlide>
-              <div class="movie-header__content-cast"></div>
-            </ng-template>
-            <ng-template swiperSlide>
-              <div class="movie-header__content-cast"></div>
-            </ng-template>
-            <ng-template swiperSlide>
-              <div class="movie-header__content-cast"></div>
-            </ng-template>
-            <ng-template swiperSlide>
-              <div class="movie-header__content-cast"></div>
-            </ng-template>
-          </swiper>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="movie-video">
-    <div class="text-border-red spacing">MOVIES</div>
-    <swiper [config]="config">
-      <ng-template swiperSlide *ngFor="let video of movie?.videos; let index = index">
-        <iframe id='youtube{{index}}' width="90%" height="500"
-          src='https://www.youtube-nocookie.com/embed/{{video.key}}' title='{{video.name}}' frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
-      </ng-template>
-    </swiper>
-  </div>
-  <div class="movie-related">
-    <div class="text-border-red spacing">you may also like</div>
+    <div class="movie-video" *ngIf="movieVideo?.length > 0">
+      <div class="text-border-red spacing">MOVIES</div>
+      <swiper [config]="config">
+        <ng-template swiperSlide *ngFor="let video of movieVideo">
+          <iframe width="90%" height="600" [src]="video.url | safe: 'resourceUrl'" frameborder="0"
+            allowfullscreen></iframe>
+        </ng-template>
+      </swiper>
+    </div>
+    <div class="movie-review" *ngIf="reviews?.length > 0">
+      <div class="text-border-red spacing">review ({{reviews.length}})</div>
+      <div class="movie-review__card" *ngFor="let review of reviews">
+        <div class="movie-review__card-image">
+          <img [src]="review.avatar" />
+        </div>
+        <div class="movie-review__card-content" [class.active]="isToogleReview && reviewId === review.id"
+          (click)="handleToogleReview(review.id)">
+          <div class="movie-review__card-author">{{review.author}}</div>
+          <div class="movie-review__card-createAt">{{review.createdAt}}</div>
+          <div>{{review.content}}</div>
+        </div>
+      </div>
 
-    <app-movie-swipper-list [movies]="movie"></app-movie-swipper-list>
+    </div>
+    <div class="movie-related" *ngIf="relatedVideos?.length > 0">
+      <div class="text-border-red spacing">you may also like</div>
+
+      <app-movie-swipper-list [movies]="relatedVideos"></app-movie-swipper-list>
+    </div>
   </div>
 </app-header-and-footer-layout>

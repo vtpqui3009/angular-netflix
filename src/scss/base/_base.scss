@@ -20,6 +20,14 @@ body::-webkit-scrollbar-thumb {
   background-image: linear-gradient(-45deg, $primary-dark, $primary-light);
 }
 
+.layout-container {
+  padding: 2%;
+
+  @include responsive($LARGE_PC) {
+    padding: 2% 10%;
+  }
+}
+
 li {
   list-style-type: none;
 }
@@ -32,6 +40,10 @@ button {
   outline: none;
   border: $BORDER_ZERO;
   cursor: pointer;
+}
+
+iframe {
+  margin-left: 5%;
 }
 
 img {
@@ -86,12 +98,14 @@ input:focus {
   @include responsive($PC) {
     padding: 0 10% 2% 10%;
   }
+
   @include responsive($PHONE) {
     padding: 0 2% 10% 2%;
   }
 }
 
 .movies-list {
+  @include size(100%);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: $SPACING;
@@ -113,14 +127,18 @@ input:focus {
   width: max-content;
   color: $white;
 }
+
 .container {
   @include size(100%, 100vh);
   overflow-y: hidden;
 }
+
 .loading-sreen {
   @include flexbox(center, center);
-  @include size(100%, 100%);
+  @include size(100%, 100vh);
+  overflow: hidden;
 }
+
 mat-progress-bar {
   // @include position($SPACING * 6.4, unset, unset, unset);
   transform: translateY($SPACING * 6.4) !important;

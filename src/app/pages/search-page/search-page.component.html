@@ -1,9 +1,33 @@
 <app-navigation></app-navigation>
+
 <div class="search-tab__container">
-  <mat-tab-group class="search-tab__container">
-    <mat-tab label="MOVIE"> </mat-tab>
-    <mat-tab label="TV"> </mat-tab>
-    <mat-tab label="PEOPLE"> </mat-tab>
+
+  <mat-tab-group class="search-tab__container" (selectedTabChange)="onTabChange($event.tab.textLabel)">
+    <mat-tab label="MOVIE">
+
+    </mat-tab>
+    <mat-tab label="TV">
+
+    </mat-tab>
+    <mat-tab label="PEOPLE">
+
+    </mat-tab>
   </mat-tab-group>
+  <input type="text" placeholder="Search IvyMovie" class="search-tab__input" (input)="onSearch($event)">
+  <ul class="movies-list search-list" *ngIf="selectedTab === 'MOVIE'">
+    <app-movie-card *ngFor="let movie of movies" [movieId]="movie.id" [imageUrl]="movie.imageUrl" [year]="movie.year"
+      [name]="movie.name"></app-movie-card>
+  </ul>
+
+  <ul class="movies-list search-list" *ngIf="selectedTab === 'TV'">
+    <app-movie-card *ngFor="let tv of TVs" [movieId]="tv.id" [imageUrl]="tv.imageUrl" [year]="tv.year"
+      [name]="tv.name"></app-movie-card>
+  </ul>
+
+  <ul class="movies-list" *ngIf="selectedTab === 'PERSON'">
+    <app-person-card *ngFor="let person of persons" [person]="person.id" [avatar]="person.avatar"
+      [name]="person.name"></app-person-card>
+  </ul>
 </div>
-<input type="text" placeholder="Search IvyMovie" class="search-tab__input">
+
+<app-footer></app-footer>

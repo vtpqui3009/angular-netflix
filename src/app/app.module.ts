@@ -7,7 +7,7 @@ import { MaterialModule } from './material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SwiperModule } from 'swiper/angular';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LoadingInterceptor } from './core/interceptors/loading-interceptor';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 
 import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
 import { HeaderAndFooterLayoutComponent } from './core/layouts/header-and-footer-layout/header-and-footer-layout.component';
@@ -28,6 +28,8 @@ import { MovieDetailComponent } from './pages/movie-detail/movie-detail.componen
 import { PersonPageComponent } from './pages/person-page/person-page.component';
 import { PersonDetailPageComponent } from './pages/person-detail-page/person-detail-page.component';
 import { LoadingScreenComponent } from './shared/components/loading-screen/loading-screen.component';
+import { SafePipe } from './shared/pipes/safe.pipe';
+import { PersonCardComponent } from './shared/components/person-card/person-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +50,8 @@ import { LoadingScreenComponent } from './shared/components/loading-screen/loadi
     PersonPageComponent,
     PersonDetailPageComponent,
     LoadingScreenComponent,
+    SafePipe,
+    PersonCardComponent,
   ],
   imports: [
     BrowserModule,

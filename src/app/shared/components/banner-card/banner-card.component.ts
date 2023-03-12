@@ -9,6 +9,7 @@ import { Genre } from '../../models/genre';
 export class BannerCardComponent {
   @Input() imageUrl: string;
   @Input() name: string;
+  @Input() id: number;
   @Input() genres: Genre[];
   @Input() overview: string;
 }

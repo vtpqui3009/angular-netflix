@@ -14,7 +14,6 @@
 
 @import "components/button";
 
-
 @import "pages/home";
 @import "pages/movies";
 @import "pages/movie-detail";
@@ -24,7 +23,6 @@
 @import "pages/persons";
 @import "pages/person-detail";
 
-
 @import "layouts/footer";
 @import "layouts/forms";
 @import "layouts/grid";
@@ -33,4 +31,4 @@
 @import "layouts/sidebar";
 
 @import "themes/theme";
-@import "src/app/app.component.scss"
+@import "src/app/app.component.scss";

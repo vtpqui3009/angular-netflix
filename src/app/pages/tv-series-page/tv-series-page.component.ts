@@ -25,14 +25,10 @@ export class TvSeriesPageComponent implements OnInit {
   subscribeMovies(): Subscription {
     return forkJoin({
       requestOne: this.movieService.getMovies(
-        IVY_MOVIE_URL.POPULAR_TV_SERIES_URL,
-        false,
-        true
+        IVY_MOVIE_URL.POPULAR_TV_SERIES_URL
       ),
       requestTwo: this.movieService.getMovies(
-        IVY_MOVIE_URL.TOP_RATED_TV_SERIES_URL,
-        false,
-        true
+        IVY_MOVIE_URL.TOP_RATED_TV_SERIES_URL
       ),
     }).subscribe(({ requestOne, requestTwo }) => {
       this.popularTvSeries = requestOne;

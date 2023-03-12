@@ -1,0 +1,15 @@
+@import "abstracts/mixin";
+@import "abstracts/variables";
+@import "abstracts/colors";
+@import "abstracts/media-query";
+.section-person__list-item {
+  @include zIndexWithPosition(relative, 1);
+  @include size(100%, 50vh);
+
+  background-position: center center;
+  cursor: pointer;
+  background-size: cover;
+}
+.text-white {
+  color: white !important;
+}
